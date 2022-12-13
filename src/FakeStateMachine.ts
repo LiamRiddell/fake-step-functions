@@ -120,7 +120,7 @@ export class FakeStateMachine {
     const isTermialState =
       state.End === true || stateType === 'Succeed' || stateType === 'Fail';
 
-    return new RunStateResult(data, stateType, nextState, isTermialState);
+    return new RunStateResult(stateName, data, stateType, nextState, isTermialState);
   }
 
   static async runStateTask(

@@ -13,6 +13,7 @@ describe('FakeStateMachine#runPartial()', () => {
       )
     ).toEqual(
       new RunStateResult(
+        "Pass2",
         {
           title: 'run-partial',
           p1: 'b',

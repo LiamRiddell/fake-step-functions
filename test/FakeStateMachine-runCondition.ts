@@ -15,7 +15,7 @@ describe('FakeStateMachine#runCondition()', () => {
           { start: 'main.initialize', end: 'main.check' }
         )
       ).toEqual(
-        new RunStateResult({ i: 1 }, 'Choice', 'main.increment', false)
+        new RunStateResult("main.check", { i: 1 }, 'Choice', 'main.increment', false)
       );
     });
   });
@@ -26,7 +26,7 @@ describe('FakeStateMachine#runCondition()', () => {
           {},
           { start: 'main.initialize', regex: /main\.\w+/ }
         )
-      ).toEqual(new RunStateResult({ i: 3 }, 'Choice', 'hoge', false));
+      ).toEqual(new RunStateResult("main.check", { i: 3 }, 'Choice', 'hoge', false));
     });
   });
 });

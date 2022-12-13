@@ -27,6 +27,7 @@ describe('FakeStateMachine#run()', () => {
       })
     ).toEqual(
       new RunStateResult(
+        "Add",
         {
           title: 'Numbers to add',
           numbers: { val1: 3, val2: 4 },
@@ -65,6 +66,7 @@ describe('FakeStateMachine#run()', () => {
         })
       ).toEqual(
         new RunStateResult(
+          "Add2",
           {
             title: 'Numbers to add',
             numbers: { val1: 3, val2: 4 },
@@ -92,6 +94,7 @@ describe('FakeStateMachine#run()', () => {
         })
       ).toEqual(
         new RunStateResult(
+          "Done",
           {
             i: 3,
           },
@@ -113,6 +116,7 @@ describe('FakeStateMachine#run()', () => {
         })
       ).toEqual(
         new RunStateResult(
+          "Done",
           {
             a1: { b: 1 },
             a2: { b: 2 },
@@ -137,6 +141,7 @@ describe('FakeStateMachine#run()', () => {
         })
       ).toEqual(
         new RunStateResult(
+          "Done",
           {
             changed: "changed by pass 0",
             unchanged: "unchanged"

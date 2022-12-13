@@ -74,7 +74,7 @@ describe('FakeStateMachine#runState()', () => {
       const fakeStateMachine = new FakeStateMachine(definition, {});
 
       expect(await fakeStateMachine.runState({ sum: 7 }, 'Target')).toEqual(
-        new RunStateResult({ sum: 7 }, 'Succeed', null, true)
+        new RunStateResult("Target", { sum: 7 }, 'Succeed', null, true)
       );
     });
   });
@@ -84,7 +84,7 @@ describe('FakeStateMachine#runState()', () => {
       const fakeStateMachine = new FakeStateMachine(definition, {});
 
       expect(await fakeStateMachine.runState({ sum: 7 }, 'Target')).toEqual(
-        new RunStateResult({ sum: 7 }, 'Fail', null, true)
+        new RunStateResult("Target", { sum: 7 }, 'Fail', null, true)
       );
     });
   });
@@ -122,6 +122,7 @@ describe('FakeStateMachine#runState()', () => {
           )
         ).toEqual(
           new RunStateResult(
+            "Choices",
             {
               condition: true,
             },
@@ -142,6 +143,7 @@ describe('FakeStateMachine#runState()', () => {
           )
         ).toEqual(
           new RunStateResult(
+            "Choices",
             {
               condition: false,
             },
@@ -167,6 +169,7 @@ describe('FakeStateMachine#runState()', () => {
           )
         ).toEqual(
           new RunStateResult(
+            "Choices",
             {
               condition1: false,
               condition2: true,
@@ -194,6 +197,7 @@ describe('FakeStateMachine#runState()', () => {
           )
         ).toEqual(
           new RunStateResult(
+            "Target",
             {
               a1: 123,
               a2: 'a',
@@ -219,6 +223,7 @@ describe('FakeStateMachine#runState()', () => {
             )
           ).toEqual(
             new RunStateResult(
+              "Target",
               {
                 a1: 123,
                 a2: { a1: 123 },
@@ -243,6 +248,7 @@ describe('FakeStateMachine#runState()', () => {
             )
           ).toEqual(
             new RunStateResult(
+              "Target",
               {
                 a1: 123,
                 a2: 'a',
@@ -267,6 +273,7 @@ describe('FakeStateMachine#runState()', () => {
             )
           ).toEqual(
             new RunStateResult(
+              "Target",
               {
                 a1: 123,
                 a2: {},
@@ -291,6 +298,7 @@ describe('FakeStateMachine#runState()', () => {
             )
           ).toEqual(
             new RunStateResult(
+              "Target",
               {
                 a1: 123,
                 a2: 123,
@@ -320,6 +328,7 @@ describe('FakeStateMachine#runState()', () => {
           )
         ).toEqual(
           new RunStateResult(
+            "Target",
             {
               a: {
                 b1: 'a-b1',
@@ -362,6 +371,7 @@ describe('FakeStateMachine#runState()', () => {
           )
         ).toEqual(
           new RunStateResult(
+            "Target",
             {
               numbers: { val1: 3, val2: 4 },
               sum: 7,
@@ -389,6 +399,7 @@ describe('FakeStateMachine#runState()', () => {
           )
         ).toEqual(
           new RunStateResult(
+            "Add",
             {
               numbers: { val1: 3, val2: 4 },
               sum: 7,
@@ -420,6 +431,7 @@ describe('FakeStateMachine#runState()', () => {
           )
         ).toEqual(
           new RunStateResult(
+            "Target",
             {
               a: {
                 b3: {
@@ -452,6 +464,7 @@ describe('FakeStateMachine#runState()', () => {
           )
         ).toEqual(
           new RunStateResult(
+            "Target",
             {
               val1: 3,
               val2: 4,
@@ -473,6 +486,7 @@ describe('FakeStateMachine#runState()', () => {
         );
         expect(await fakeStateMachine.runState({}, 'Target')).toEqual(
           new RunStateResult(
+            "Target",
             {
               result: 6,
             },
@@ -492,6 +506,7 @@ describe('FakeStateMachine#runState()', () => {
         );
         expect(await fakeStateMachine.runState({}, 'Target')).toEqual(
           new RunStateResult(
+            "Target",
             {
               a: 1,
               b: 2,
