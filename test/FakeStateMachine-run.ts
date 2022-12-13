@@ -126,6 +126,8 @@ describe('FakeStateMachine#run()', () => {
           true
         )
       );
+
+
     });
   });
 
@@ -133,13 +135,12 @@ describe('FakeStateMachine#run()', () => {
     test('should not throw an Error', async () => {
       const definition = require('./fixtures/definitions/pass-state-undefined-resultpath.json');
       const fakeStateMachine = new FakeStateMachine(definition, {});
+      const exitStateResult = await fakeStateMachine.run({
+        changed: "TBD",
+        unchanged: "unchanged"
+      });
 
-      expect(
-        await fakeStateMachine.run({
-          changed: "TBD",
-          unchanged: "unchanged"
-        })
-      ).toEqual(
+      expect(exitStateResult).toEqual(
         new RunStateResult(
           "Done",
           {
@@ -151,6 +152,12 @@ describe('FakeStateMachine#run()', () => {
           true
         )
       );
+
+      expect(fakeStateMachine.executedStates).toEqual([
+        "Pass0",
+        "Plaholder Pass State",
+        "Done"
+      ])
     });
   });
 });

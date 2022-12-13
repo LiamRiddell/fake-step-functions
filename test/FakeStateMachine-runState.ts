@@ -159,6 +159,7 @@ describe('FakeStateMachine#runState()', () => {
       test('should select the expected state as a next state', async () => {
         const definition = require('./fixtures/definitions/choice-more-than-one-choice.json');
         const fakeStateMachine = new FakeStateMachine(definition, {});
+
         expect(
           await fakeStateMachine.runState(
             {

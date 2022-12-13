@@ -29,10 +29,12 @@ const isObject = (x: object) => typeof x === 'object' && x !== null;
 export class FakeStateMachine {
   definition: Definition;
   fakeResources: Resource;
+  executedStates: Array<string>;
 
   constructor(definition: Definition, fakeResources: Resource) {
     this.definition = definition;
     this.fakeResources = fakeResources;
+    this.executedStates = new Array();
   }
 
   async run(input: object): Promise<RunStateResult> {
@@ -117,8 +119,11 @@ export class FakeStateMachine {
       default:
         throw new Error(`Invalid Type: ${stateType}`);
     }
+
     const isTermialState =
       state.End === true || stateType === 'Succeed' || stateType === 'Fail';
+
+    this.executedStates.push(stateName);
 
     return new RunStateResult(stateName, data, stateType, nextState, isTermialState);
   }
